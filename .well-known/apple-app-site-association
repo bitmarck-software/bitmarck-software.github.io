@@ -1,0 +1,25 @@
+{
+    "applinks": {              
+        "apps": [],            
+        "details": [
+            {
+                "appID": "KNV84UNRF7.de.bitmarck.bitoneapp",
+                "components": [
+                   {
+                      "/": "app/*",
+                      "comment": "Matches any URL with a path that starts with 'app'" 
+                   }
+                ]
+            },
+            {
+                "appID": "KNV84UNRF7.de.bitmarck.bitoneapp.rise",
+                "components": [
+                   {
+                      "/": "app/*",
+                      "comment": "Matches any URL with a path that starts with 'app'" 
+                   }
+                ]
+            }
+        ]
+    }
+}

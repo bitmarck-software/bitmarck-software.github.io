@@ -1,0 +1,33 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "de.bitmarck.bitone.bitmarck",
+            "sha256_cert_fingerprints": [
+                "a5:6f:06:c1:49:c3:1f:e6:6f:50:0a:98:ca:35:68:7a:b3:7b:fb:05:7b:bb:68:e1:c7:ca:8d:94:e5:69:c2:43"
+            ]
+        }
+    },
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "de.bitmarck.bitone.bitmarck.debug",
+            "sha256_cert_fingerprints": [
+                "0b:2a:5f:37:34:b1:a2:80:2d:52:fe:d7:e1:bc:cc:d0:32:0f:03:08:b8:b4:50:d2:35:07:31:42:14:dd:16:2c",
+                "1c:e9:a3:51:e2:35:c4:12:28:bd:aa:30:fc:35:ec:2c:e7:12:5d:dd:cd:0c:c9:8b:8a:28:dc:93:f9:e1:fd:fc",
+                "b7:18:6c:b8:4b:df:10:43:60:3f:5e:89:e5:60:0c:ec:4b:23:90:c7:ef:39:56:37:44:51:ca:28:2a:7b:37:3d",
+                "b8:4f:93:56:62:4a:fa:42:f7:c6:cc:87:b2:9c:b3:54:66:13:05:68:36:32:1f:06:c5:a6:2c:b8:5a:da:29:e5",
+                "11:ee:89:b2:0c:1e:4b:74:ca:f3:f1:8a:9a:7f:a1:59:23:f7:c6:78:02:67:4a:b5:09:04:d7:f8:97:b2:ba:43",
+                "ed:6e:fe:97:9f:59:03:6f:33:77:a1:9e:6c:1e:71:4a:7e:98:99:4c:ad:96:65:cf:7f:58:8f:4a:24:75:f0:8e",
+                "94:de:be:d6:0d:ab:2e:bf:30:7c:cc:bc:51:1a:ee:7e:3b:4b:de:83:ef:fc:29:cb:58:ed:1b:28:b1:a1:f6:4c",
+                "b1:f3:54:e2:dc:8d:f7:b4:74:0b:33:bf:95:3e:03:d9:00:95:fc:34:27:64:cc:19:8b:4f:74:ea:e9:17:c3:95"
+            ]
+        }
+    }
+]
