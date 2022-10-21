@@ -1,11 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
+<meta name="viewport" content="initial-scale=1">
+
+<script>
+    window.onload = function () {
+        update_current_domain(window.location.hostname);
+        save();
+    }
+
+    function get_domain() {
+        var domainInput = document.getElementById("domainInput").value;
+        domainInput = domainInput.replace("http://", "");
+        domainInput = domainInput.replace("https://", "");
+        return domainInput;
+    }
+    function update_current_domain(domain) {
+        document.getElementById("domainInput").value = domain;
+        document.getElementById("currentDomain").innerHTML = domain;
+        document.getElementById("currentDomainGenericLink").innerHTML = domain;
+    }
+    function update_android_settings() {
+        update_android_application_id();
+    }
+    function update_android_application_id() {
+        const input = document.getElementById("androidApplicationId").value;
+
+        const element = document.getElementById("currentAndroidApplicationId");
+        element.innerHTML = input;
+    }
+
+    function update_ios_settings() {
+        update_ios_team_id();
+        update_ios_bundle_id();
+    }
+    function update_ios_team_id() {
+        const input = document.getElementById("iosTeamId").value;
+
+        const element = document.getElementById("currentiosTeamId");
+        element.innerHTML = input;
+    }
+    function update_ios_bundle_id() {
+        const input = document.getElementById("iosBundleId").value;
+
+        const element = document.getElementById("currentiosBundleId");
+        element.innerHTML = input;
+    }
+
+    function update_links(domain) {
+        const linkIds = new Map([
+            ["linkGotoApp", "https://<domain>/app/DocumentUploadAddOn"],
+            ["linkGotoDocumentUpload", "https://<domain>/app/DocumentUploadAddOn"],
+            ["linkAppleAppSiteAssociation", "https://<domain>/.well-known/apple-app-site-association"],
+            ["linkShowToken", "https://<domain>/.well-known/assetlinks.json"],
+        ]);
+
+        for (const [elementId, linkTemplate] of linkIds.entries()) {
+            const element = document.getElementById(elementId);
+            element.href = linkTemplate.replace("<domain>", domain);
+        }
+    }
+
+    function save() {
+        var domain = get_domain()
+
+        update_current_domain(domain)
+        update_android_settings()
+        update_ios_settings()
+
+        update_links(domain)
+    }
+
+    function get_generic_link_path() {
+        return document.getElementById("genericPath").value;
+    }
+
+    function open_generic_link() {
+        save()
+
+        const domain = get_domain()
+        const path = get_generic_link_path()
+
+        window.open("https://" + domain + path)
+    }
+</script>
 
 <head>
     <meta charset="utf-8">
     <title>Test HTML page</title>
 </head>
 
-<body>
-    <h1>Willkommen zu BITMARCK Software</h1>
+<body style="font-size: 16px;">
+    <h1>Bundesportalseite</h1>
+
+    <h2>Anwendungsbeispiele</h2>
+
+    <a id="linkGotoApp" href="https://<domain>/app">Go to App</a>
+    </br> </br>
+    <a id="linkGotoDocumentUpload" href="https://<domain>/app/DocumentUploadAddOn">Enter DocumentUploadAddOn</a>
+    </br> </br>
+
+    <h2>Interne AppLink / UniversalLink Test Szenarios</h2>
+
+    Achtung: Die hier angegebenen Links müssen
+    entsprechend der Kassendomain angepasst werden!
+
+    <br> <br>
+
+    <h2>Edit Settings</h2>
+
+    Domain : <input id="domainInput" type="text" name="domain" value="bahn-bkk.de" required><br>
+    <br>
+    Android Application ID : <input id="androidApplicationId" type="text" name="androidApplicationId"
+        value="de.bitmarck.bitone" required><br>
+    <br>
+    iOS Team ID : <input id="iosTeamId" type="text" name="iosTeamId" value="CD35G78S93" required><br>
+    iOS Bundle ID : <input id="iosBundleId" type="text" name="iosBundleId" value="de.bahnbkk.bahnBkkApp" required><br>
+
+    <input style="padding-left: 32px; padding-right: 32px; padding-top: 8px; padding-bottom: 8px;" type="button"
+        value="Save" id="submitDomainInput" onclick="save();"><br>
+    <br>
+
+    <h2>Current Settings:</h2>
+    Domain: <b id="currentDomain"> &lt;domain&gt; </b> <br>
+    <br>
+    Android Application ID: <b id="currentAndroidApplicationId"> &lt;androidApplicationId&gt; </b> <br>
+    <br>
+    iOS Team ID : <b id="currentiosTeamId"> &lt;iosTeamId&gt; </b> <br>
+    iOS Bundle ID : <b id="currentiosBundleId"> &lt;iosBundleId&gt; </b> <br>
+    <br>
+
+    <h2>Actions</h2>
+
+    <div style="display: inline-block; font-size: 12px;">Custom Link: https://<div style="display: inline-block;"
+            id="currentDomainGenericLink">&lt;domain&gt;</div> <input id="genericPath" type="text" name="genericPath"
+            value="/formular" required> <input type="button" value="Open" id="openGenericLink"
+            onclick="open_generic_link();"></div>
+
+    <br> <br>
+
+    <a id="linkAppleAppSiteAssociation" href="https://<domain>/.well-known/apple-app-site-association">Show
+        apple-app-site-association</a> -- From Mobile Device (actual domain)
+    <br> <br>
+    <a href="http://localhost/.well-known/apple-app-site-association">Show apple-app-site-association</a> -- From
+    Laptop/PC (localhost)
+    <br> <br>
+
+    <a id="linkShowToken" href="https://<domain>/.well-known/assetlinks.json">Show assetlinks.json</a> -- From Mobile
+    Device (actual domain)
+    <br> <br>
+    <a href="http://localhost/.well-known/assetlinks.json">Show assetlinks.json</a> -- From Laptop/PC (localhost)
 </body>
+
+</html>
