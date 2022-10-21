@@ -5,7 +5,7 @@
 <script>
     window.onload = function () {
         // automatic redirect if we get a session cookie from the client
-        const sessionCookieLookupResult = document.cookie.indexOf('cookie_name=');
+        const sessionCookieLookupResult = document.cookie.indexOf('JSessionID=');
 
         update_current_domain(window.location.hostname);
         save();
