@@ -7,10 +7,18 @@
         // automatic redirect if we get a session cookie from the client
         const sessionCookieLookupResult = document.cookie.indexOf('JSessionID=');
 
+        var req = new XMLHttpRequest();
+        req.open('GET', document.location, false);
+        req.send(null);
+        var headers = req.getAllResponseHeaders().toLowerCase();
+
+        const xSsoTokenPresent = headers.includes("x-sso-token");
+        
+
         update_current_domain(window.location.hostname);
         save();
 
-        if (sessionCookieLookupResult != -1) {
+        if (xSsoTokenPresent || sessionCookieLookupResult != -1) {
             const currentDomain = get_domain()
             window.location.replace("https://" + currentDomain + "/demo_site.html");
         }
