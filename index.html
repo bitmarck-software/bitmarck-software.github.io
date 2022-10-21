@@ -5,20 +5,13 @@
 <script>
     window.onload = function () {
         // automatic redirect if we get a session cookie from the client
-        const sessionCookieLookupResult = document.cookie.indexOf('JSessionID=');
-
-        var req = new XMLHttpRequest();
-        req.open('GET', document.location, false);
-        req.send(null);
-        var headers = req.getAllResponseHeaders().toLowerCase();
-
-        const xSsoTokenPresent = headers.includes("x-sso-token");
-        
+        print(document.cookie)
+        const sessionCookieLookupResult = document.cookie.toLowerCase().includes("session");
 
         update_current_domain(window.location.hostname);
         save();
 
-        if (xSsoTokenPresent || sessionCookieLookupResult != -1) {
+        if (sessionCookieLookupResult == true) {
             const currentDomain = get_domain()
             window.location.replace("https://" + currentDomain + "/demo_site.html");
         }
@@ -31,6 +24,10 @@
         return domainInput;
     }
     function update_current_domain(domain) {
+        if (domain == "") {
+            domain = document.getElementById("domainInput").value
+        }
+
         document.getElementById("domainInput").value = domain;
         document.getElementById("currentDomain").innerHTML = domain;
         document.getElementById("currentDomainGenericLink").innerHTML = domain;
@@ -120,13 +117,15 @@
     <br> <br>
 
     <a id="linkAppleAppSiteAssociation" href="https://<domain>/.well-known/apple-app-site-association">
-        Show  apple-app-site-association
+        Show apple-app-site-association
     </a> -- From Mobile Device (actual domain)
     <br> <br>
-    <a href="http://localhost/.well-known/apple-app-site-association">Show apple-app-site-association</a> -- From Laptop/PC (localhost)
+    <a href="http://localhost/.well-known/apple-app-site-association">Show apple-app-site-association</a> -- From
+    Laptop/PC (localhost)
     <br> <br>
 
-    <a id="linkShowToken" href="https://<domain>/.well-known/assetlinks.json">Show assetlinks.json</a> -- From Mobile Device (actual domain)
+    <a id="linkShowToken" href="https://<domain>/.well-known/assetlinks.json">Show assetlinks.json</a> -- From Mobile
+    Device (actual domain)
     <br> <br>
     <a href="http://localhost/.well-known/assetlinks.json">Show assetlinks.json</a> -- From Laptop/PC (localhost)
 </body>
