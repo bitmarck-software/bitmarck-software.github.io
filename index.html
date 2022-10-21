@@ -34,8 +34,8 @@
     }
     function update_links(domain) {
         const linkIds = new Map([
-            ["linkGotoApp", "https://<domain>/app/DocumentUploadAddOn"],
-            ["linkGotoDocumentUpload", "https://<domain>/app/DocumentUploadAddOn"],
+            ["linkGotoApp", "https://<domain>/addOn/DashboardAddOn?config=dashboard.json"],
+            ["linkGotoDocumentUpload", "https://<domain>/addOn/DocumentUploadAddOn?configfile=document_upload_config"],
             ["linkAppleAppSiteAssociation", "https://<domain>/.well-known/apple-app-site-association"],
             ["linkShowToken", "https://<domain>/.well-known/assetlinks.json"],
         ]);
