@@ -19,33 +19,6 @@
         document.getElementById("currentDomain").innerHTML = domain;
         document.getElementById("currentDomainGenericLink").innerHTML = domain;
     }
-    function update_android_settings() {
-        update_android_application_id();
-    }
-    function update_android_application_id() {
-        const input = document.getElementById("androidApplicationId").value;
-
-        const element = document.getElementById("currentAndroidApplicationId");
-        element.innerHTML = input;
-    }
-
-    function update_ios_settings() {
-        update_ios_team_id();
-        update_ios_bundle_id();
-    }
-    function update_ios_team_id() {
-        const input = document.getElementById("iosTeamId").value;
-
-        const element = document.getElementById("currentiosTeamId");
-        element.innerHTML = input;
-    }
-    function update_ios_bundle_id() {
-        const input = document.getElementById("iosBundleId").value;
-
-        const element = document.getElementById("currentiosBundleId");
-        element.innerHTML = input;
-    }
-
     function update_links(domain) {
         const linkIds = new Map([
             ["linkGotoApp", "https://<domain>/app/DocumentUploadAddOn"],
@@ -64,8 +37,6 @@
         var domain = get_domain()
 
         update_current_domain(domain)
-        update_android_settings()
-        update_ios_settings()
 
         update_links(domain)
     }
@@ -113,9 +84,6 @@
     Android Application ID : <input id="androidApplicationId" type="text" name="androidApplicationId"
         value="de.bitmarck.bitone" required><br>
     <br>
-    iOS Team ID : <input id="iosTeamId" type="text" name="iosTeamId" value="KNV84UNRF7" required><br>
-    iOS Bundle ID : <input id="iosBundleId" type="text" name="iosBundleId" value="de.bitmarck.bitoneapp" required><br>
-
     <input style="padding-left: 32px; padding-right: 32px; padding-top: 8px; padding-bottom: 8px;" type="button"
         value="Save" id="submitDomainInput" onclick="save();"><br>
     <br>
@@ -124,9 +92,6 @@
     Domain: <b id="currentDomain"> &lt;domain&gt; </b> <br>
     <br>
     Android Application ID: <b id="currentAndroidApplicationId"> &lt;androidApplicationId&gt; </b> <br>
-    <br>
-    iOS Team ID : <b id="currentiosTeamId"> &lt;iosTeamId&gt; </b> <br>
-    iOS Bundle ID : <b id="currentiosBundleId"> &lt;iosBundleId&gt; </b> <br>
     <br>
 
     <h2>Actions</h2>
