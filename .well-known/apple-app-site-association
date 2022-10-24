@@ -7,7 +7,15 @@
                 "components": [
                    {
                       "/": "app/*",
-                      "comment": "Matches any URL with a path that starts with 'app'" 
+                      "comment": "Matches any URL with a path that starts with 'app'"
+                   },
+                   {
+                      "/": "addOn/*",
+                      "comment": "Matches any URL with a path that starts with 'addOn'"
+                   },
+                   {
+                      "/": "formular/*",
+                      "comment": "Matches any URL with a path that starts with 'formular'"
                    }
                 ]
             },
@@ -16,7 +24,15 @@
                 "components": [
                    {
                       "/": "app/*",
-                      "comment": "Matches any URL with a path that starts with 'app'" 
+                      "comment": "Matches any URL with a path that starts with 'app'"
+                   },
+                   {
+                      "/": "addOn/*",
+                      "comment": "Matches any URL with a path that starts with 'addOn'"
+                   },
+                   {
+                      "/": "formular/*",
+                      "comment": "Matches any URL with a path that starts with 'formular'"
                    }
                 ]
             }
